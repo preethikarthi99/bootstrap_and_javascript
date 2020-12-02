@@ -1,0 +1,146 @@
+<html>
+        <head>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        </head>
+        <body class="p-3 bg-dark text-white ">
+            <h3 class="text-center mt-4"> Linked List Implementation</h3>
+            <div class="container mt-4  ">
+                <div class="card text-dark text-center">
+                    <div class="card-header">
+                        OPTIONS
+                    </div>
+                    <div class="card-body text-center p-4">
+                        <h4>Add element to the List</h4>
+                        <div class="container-fluid justify-content-center">
+                            <div class="row justify-content-center">
+                                <div class="col-3">
+                                    <input type="text" class="form-control mr-sm-2" id="d1" aria-describedby="data" placeholder="Enter data ">
+                                </div>
+                                <div class="col-2">
+                                    <button onclick="adddata()" class="btn btn-outline-success my-2 my-sm-0">Add Element</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <h4 class="mt-5">Delete the First Element in the List</h4>
+                        <button onclick="popdata()" class="btn btn-outline-danger"> Delete</button>                        
+                    </div>
+                </div>
+            </div>
+            <h4 class="mt-5 text-center"> LINKED LIST</h4>
+            <p id="daata" class="text-center">.........</p>
+            <!--{{--  <button onclick="prindata()"> Print</button>  --}}-->
+            <script>
+                var x;
+                var z="";
+                window.onload = codeAddress;
+                function codeAddress() {
+                    x=new LinkedList;
+                }
+                function adddata(){                    
+                    x.add(document.getElementById('d1').value);
+                }
+                function prindata(){
+                    x.printList();
+                }
+                function popdata(){
+                    x.pop();
+                    x.printList();
+                }
+                class Node { 
+                    constructor(element) 
+                    { 
+                        this.element = element; 
+                        this.next = null
+                    } 
+                } 
+                class LinkedList { 
+                    constructor() 
+                    { 
+                        this.head = null; 
+                        this.size = 0; 
+                    } 
+                    add(element) 
+                    { 
+                        if(element!=""){
+                            var node = new Node(element); 
+                            var current; 
+                            if (this.head == null) 
+                                this.head = node; 
+                            else { 
+                                current = this.head; 
+                                while (current.next) { 
+                                    current = current.next; 
+                                } 
+                                current.next = node; 
+                            } 
+                            console.log(this.size);
+                            if(this.size==0){
+                                z=element;
+                                console.log(z);
+                            }
+                            else{
+                                z=z+" -> "+element;   
+                            }
+                            this.size++; 
+                            document.getElementById('daata').innerHTML=z;   
+                        }
+                        else{
+                            alert('Please enter a value');
+                        }
+                                             
+                    } 
+
+                    pop() 
+                    { 
+                        
+                        if (0 >=this.size) 
+                            alert('sorry')
+                        else { 
+                            var s=this.head.element;
+                            this.head = this.head.next; 
+                            var current = this.head; 
+                            this.size--;                             
+                            z="";
+                            var y=0;
+                            if(this.size==0){
+                                z=".........";
+                            }
+                            else{
+                                while (y<this.size) {
+                                    if(y==0){
+                                        z=current.element;
+                                    }
+                                    else{
+                                        z=z+" -> "+current.element;   
+                                    }
+                                    current = current.next; 
+                                    y=y+1;
+                                } 
+                            }
+                            
+                            
+                            document.getElementById('daata').innerHTML=z;
+                        } 
+                    } 
+                    printList() 
+                    { 
+                        var curr = this.head; 
+                        var str = ""; 
+                        while (curr) { 
+                            str += curr.element + " "; 
+                            curr = curr.next; 
+                        } 
+
+                        
+                        console.log(str); 
+                    } 
+                } 
+            </script>
+        </body>
+    </html>
+</div>

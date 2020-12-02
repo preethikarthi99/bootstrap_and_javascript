@@ -1,0 +1,18 @@
+<html>
+        <body>
+            Date 1: <input type="date" id="d1"><br>
+            Date 2: <input type="date" id="d2">
+            <input type="submit"  onclick="myFunction()">
+            <p id="demo1"></p>
+        <script>
+            function myFunction(){
+                var x= new Date(document.getElementById("d1").value);
+                var y= new Date(document.getElementById("d2").value);
+                var timeDiff = y.getTime() - x.getTime(); 
+                var diffDays = timeDiff / (1000 * 3600 * 24);
+                document.getElementById("demo1").innerHTML = diffDays;
+            }
+        </script>
+
+        </body>
+    </html>
